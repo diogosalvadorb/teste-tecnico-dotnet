@@ -1,6 +1,42 @@
 @oficina.API_HostAddress = http://localhost:5067
 
-GET {{oficina.API_HostAddress}}/weatherforecast/
+### Criar orcamento valido
+POST {{oficina.API_HostAddress}}/api/orcamentos
+Content-Type: application/json
 Accept: application/json
 
+{
+  "clienteId": 1,
+  "veiculoId": 10,
+  "itens": [
+    {
+      "descricao": "Troca de oleo",
+      "quantidade": 1,
+      "valorUnitario": 120.50
+    },
+    {
+      "descricao": "Filtro de oleo",
+      "quantidade": 1,
+      "valorUnitario": 45.00
+    }
+  ]
+}
+
 ###
+
+### Criar orcamento invalido
+POST {{oficina.API_HostAddress}}/api/orcamentos
+Content-Type: application/json
+Accept: application/json
+
+{
+  "clienteId": 0,
+  "veiculoId": 0,
+  "itens": [
+    {
+      "descricao": "",
+      "quantidade": 0,
+      "valorUnitario": 0
+    }
+  ]
+}
